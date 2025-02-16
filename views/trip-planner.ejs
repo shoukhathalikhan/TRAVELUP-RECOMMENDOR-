@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trip Planner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --zaiba-blue: #26c6da;
+            --zaiba-blue-dark: #0097a7;
+            --zaiba-blue-light: #80deea;
+            --background-gradient: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-gradient);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--zaiba-blue-dark);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--zaiba-blue);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--zaiba-blue-light);
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        select:focus {
+            outline: none;
+            border-color: var(--zaiba-blue);
+            box-shadow: 0 0 0 3px rgba(38, 198, 218, 0.3);
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--zaiba-blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover:not(:disabled) {
+            background-color: var(--zaiba-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        button:disabled {
+            background-color: #d1d5db;
+            cursor: not-allowed;
+        }
+        .recommendations {
+            margin-top: 40px;
+        }
+        .recommendations h2 {
+            text-align: center;
+            color: var(--zaiba-blue-dark);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .recommendation-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+        }
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .recommendation-card h3 {
+            color: var(--zaiba-blue-dark);
+            margin-top: 0;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--zaiba-blue-light);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .recommendation-card p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .recommendation-card ul {
+            padding-left: 20px;
+        }
+        .recommendation-card li {
+            margin-bottom: 5px;
+        }
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Trip Planner 🌴</h1>
+        <p class="subtitle">Plan your dream trip with personalized itineraries.</p>
+
+        <div class="form-grid">
+            <select id="region" onchange="handleRegionChange()">
+                <option value="">Select Region</option>
+                <% Object.keys(regionStates).forEach(function(region) { %>
+                    <option value="<%= region %>"><%= region %></option>
+                <% }); %>
+            </select>
+    
+            <select id="state" onchange="handleStateChange()" disabled>
+                <option value="">Select State</option>
+            </select>
+    
+            <select id="activity" onchange="handleActivityChange()">
+                <option value="">Select Activity Type</option>
+                <% Object.keys(activities).forEach(function(activity) { %>
+                    <option value="<%= activity %>"><%= activity %></option>
+                <% }); %>
+            </select>
+    
+            <select id="subActivity" onchange="handleSubActivityChange()" disabled>
+                <option value="">Select Specific Activity</option>
+            </select>
+        </div>
+    
+        <button id="getRecommendations" onclick="getRecommendations()">Get Recommendations</button>
+    
+        <div id="recommendations" class="recommendations" style="display: none;">
+            <div id="recommendationGrid"></div>
+        </div>
+    </div>
+    
+    <script>
+        const regionStates = JSON.parse('<%- JSON.stringify(regionStates) %>');
+        const activities = JSON.parse('<%- JSON.stringify(activities) %>');
+        
+        let selectedRegion = "";
+        let selectedState = "";
+        let selectedActivity = "";
+        let selectedSubActivity = "";
+    
+        function handleRegionChange() {
+            selectedRegion = document.getElementById('region').value;
+            const stateSelect = document.getElementById('state');
+            stateSelect.innerHTML = '<option value="">Select State</option>';
+            stateSelect.disabled = !selectedRegion;
+    
+            if (selectedRegion) {
+                regionStates[selectedRegion].forEach(state => {
+                    const option = document.createElement('option');
+                    option.value = state;
+                    option.textContent = state;
+                    stateSelect.appendChild(option);
+                });
+            }
+            updateButtonState();
+        }
+    
+        function handleStateChange() {
+            selectedState = document.getElementById('state').value;
+            updateButtonState();
+        }
+    
+        function handleActivityChange() {
+            selectedActivity = document.getElementById('activity').value;
+            const subActivitySelect = document.getElementById('subActivity');
+            subActivitySelect.innerHTML = '<option value="">Select Specific Activity</option>';
+            subActivitySelect.disabled = !selectedActivity;
+    
+            if (selectedActivity) {
+                activities[selectedActivity].forEach(subActivity => {
+                    const option = document.createElement('option');
+                    option.value = subActivity;
+                    option.textContent = subActivity;
+                    subActivitySelect.appendChild(option);
+                });
+            }
+            updateButtonState();
+        }
+    
+        function handleSubActivityChange() {
+            selectedSubActivity = document.getElementById('subActivity').value;
+            updateButtonState();
+        }
+    
+        function updateButtonState() {
+            const button = document.getElementById('getRecommendations');
+            button.disabled = !(selectedRegion && selectedState && selectedActivity && selectedSubActivity);
+        }
+    
+        async function getRecommendations() {
+            const button = document.getElementById('getRecommendations');
+            button.textContent = 'Getting Recommendations...';
+            button.disabled = true;
+    
+            try {
+                const response = await fetch("/api/rec/recommendation", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        region: selectedRegion,
+                        state: selectedState,
+                        activity: selectedActivity,
+                        subActivity: selectedSubActivity
+                    }),
+                });
+    
+                const data = await response.json();
+                displayRecommendations(data);
+            } catch (error) {
+                console.error("Error fetching recommendations:", error);
+                alert("Failed to fetch recommendations. Please try again.");
+            } finally {
+                button.textContent = 'Get Recommendations';
+                button.disabled = false;
+            }
+        }
+    
+        function displayRecommendations(data) {
+            const recommendationsDiv = document.getElementById('recommendations');
+            const recommendationGrid = document.getElementById('recommendationGrid');
+    
+            recommendationGrid.innerHTML = '';
+    
+            // Destination Overview
+            const overviewCard = createCard('Destination Overview', `<p>${data.destination_overview}</p>`);
+            recommendationGrid.appendChild(overviewCard);
+    
+            // Top Attractions
+            const attractionsCard = createCard('Top Attractions', data.top_attractions.map(attraction => 
+                `<p><strong>${attraction.name}</strong>: ${attraction.description}</p>`
+            ).join(''));
+            recommendationGrid.appendChild(attractionsCard);
+    
+            // Travel Itinerary
+            const itineraryCard = createCard('Travel Itinerary', data.travel_itinerary.map(day => 
+                `<h4>Day ${day.day}</h4><ul>${day.activities.map(activity => `<li>${activity}</li>`).join('')}</ul>`
+            ).join(''));
+            recommendationGrid.appendChild(itineraryCard);
+    
+            // Best Time to Visit
+            const timeCard = createCard('Best Time to Visit', `<p>${data.best_time_to_visit}</p>`);
+            recommendationGrid.appendChild(timeCard);
+    
+            // Local Cuisine
+            const cuisineCard = createCard('Local Cuisine', `<ul>${data.local_cuisine.map(cuisine => `<li>${cuisine}</li>`).join('')}</ul>`);
+            recommendationGrid.appendChild(cuisineCard);
+    
+            // Additional Tips
+            const tipsCard = createCard('Additional Tips', `<ul>${data.additional_tips.map(tip => `<li>${tip}</li>`).join('')}</ul>`);
+            recommendationGrid.appendChild(tipsCard);
+    
+            recommendationsDiv.style.display = 'block';
+        }
+    
+        function createCard(title, content) {
+            const card = document.createElement('div');
+            card.className = 'recommendation-card';
+            card.innerHTML = `
+                <h3>${title}</h3>
+                ${content}
+            `;
+            return card;
+        }
+    </script>
+</body>
+</html>

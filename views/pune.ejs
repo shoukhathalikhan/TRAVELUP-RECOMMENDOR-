@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pune</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travel Guide Pune">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/styles/offers_styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/offers_responsive.css">
+    <style>
+        p { text-align: justify; }
+    </style>
+</head>
+<body>
+
+    <%- include('headerplaces') %> <!-- Include header if you have one -->
+
+    <div class="menu trans_500">
+        <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+            <div class="menu_close_container"><div class="menu_close"></div></div>
+            <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+            <ul>
+                <li class="menu_item"><a href="/loggedinhome">HOME</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Home -->
+    <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll" data-image-src="/images/pune.jpg"></div>
+    </div>
+
+   <!-- Offers Section -->
+		<div class="search">
+            <div class="search_inner">
+                <div class="container fill_height no-padding">
+                    <div class="row fill_height no-margin">
+                        <div class="col fill_height no-padding">
+                            <!-- Search Tabs -->
+                            <div class="home_title" style="color:#26c6da; font-size: 3rem;" ><center>Pune</center></div>
+                        </div>
+                    </div>
+                </div>    
+            </div>    
+        </div>
+
+        <!-- Offers -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1 temp_col"></div>
+                <div class="col-lg-11">
+                    <!-- Offers Grid -->
+                    <div class="offers_grid">
+                        <!-- Place 1: Shaniwar Wada -->
+                        <div class="offers_item rating_5">
+                            <div class="row">
+                                <div class="col-lg-1 temp_col"></div>
+                                <div class="col-lg-3 col-1680-4">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background" style="background-image:url(/images/Shaniwar_wada.jpg)"></div>
+                                        <div class="offer_name"><a href="single_listing.html">Shaniwar Wada</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="offers_content">
+                                        <div class="offers_price">Shaniwar Wada</div>
+                                        <div class="rating_r rating_r_5 offers_rating" data-rating="5">
+                                            <i></i><i></i><i></i><i></i><i></i>
+                                        </div>
+                                        <p class="offers_text">A historic fortification in Pune, Shaniwar Wada is known for its architectural grandeur and fascinating history dating back to the Maratha Empire.</p>
+                                        <div class="button book_button"><a href="https://www.holidify.com/places/pune/shaniwar-wada/">Know more<span></span><span></span><span></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Place 2: Aga Khan Palace -->
+                        <div class="offers_item rating_5">
+                            <div class="row">
+                                <div class="col-lg-1 temp_col"></div>
+                                <div class="col-lg-3 col-1680-4">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background" style="background-image:url(/images/Aga_Khan_Pune_Palace.jpg)"></div>
+                                        <div class="offer_name"><a href="single_listing.html">Aga Khan Palace</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="offers_content">
+                                        <div class="offers_price">Aga Khan Palace</div>
+                                        <div class="rating_r rating_r_5 offers_rating" data-rating="5">
+                                            <i></i><i></i><i></i><i></i><i></i>
+                                        </div>
+                                        <p class="offers_text">This iconic palace holds immense historical importance as it served as a prison for Mahatma Gandhi during the Indian freedom struggle.</p>
+                                        <div class="button book_button"><a href="https://www.holidify.com/places/pune/aga-khan-palace/">Know more<span></span><span></span><span></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Place 3: Sinhagad Fort -->
+                        <div class="offers_item rating_5">
+                            <div class="row">
+                                <div class="col-lg-1 temp_col"></div>
+                                <div class="col-lg-3 col-1680-4">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background" style="background-image:url(/images/Sinhagad_Fort.jpg)"></div>
+                                        <div class="offer_name"><a href="single_listing.html">Sinhagad Fort</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="offers_content">
+                                        <div class="offers_price">Sinhagad Fort</div>
+                                        <div class="rating_r rating_r_5 offers_rating" data-rating="5">
+                                            <i></i><i></i><i></i><i></i><i></i>
+                                        </div>
+                                        <p class="offers_text">Sinhagad Fort is a popular trekking destination and historical landmark. It offers breathtaking views and a glimpse into Maharashtra's rich past.</p>
+                                        <div class="button book_button"><a href="https://www.holidify.com/places/pune/sinhagad-fort/">Know more<span></span><span></span><span></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Place 4: Pataleshwar Cave Temple -->
+                        <div class="offers_item rating_5">
+                            <div class="row">
+                                <div class="col-lg-1 temp_col"></div>
+                                <div class="col-lg-3 col-1680-4">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background" style="background-image:url(/images/Pataleshwar_cave_temple.jpg)"></div>
+                                        <div class="offer_name"><a href="single_listing.html">Pataleshwar Cave Temple</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="offers_content">
+                                        <div class="offers_price">Pataleshwar Cave Temple</div>
+                                        <div class="rating_r rating_r_5 offers_rating" data-rating="5">
+                                            <i></i><i></i><i></i><i></i><i></i>
+                                        </div>
+                                        <p class="offers_text">This 8th-century rock-cut temple dedicated to Lord Shiva is an architectural gem nestled in the heart of Pune.</p>
+                                        <div class="button book_button"><a href="https://www.holidify.com/places/pune/pataleshwar-cave-temples/">Know more<span></span><span></span><span></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/styles/bootstrap4/popper.js"></script>
+<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/parallax-js-master/parallax.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-Travel AI Landing Page</title>
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: white;
+        color: #333;
+    }
+
+    .container {
+        min-height: 100vh;
+        position: relative;
+    }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    header {
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo-text {
+        font-family: 'Dancing Script', cursive;
+        color: #26c6da;
+        font-size: 2rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav {
+        display: flex;
+        gap: 20px;
+    }
+    nav a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #333;
+        transition: color 0.3s;
+    }
+    nav a:hover {
+        color: #26c6da;
+    }
+    a {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Optional: Keep the text color the same as the surrounding content */
+    }
+
+    .icons {
+        display: flex;
+        gap: 20px;
+    }
+    .icons a {
+        font-size: 1.2rem;
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .icons a:hover {
+        color: #26c6da;
+    }
+
+    /* Main content */
+    .main-content {
+        text-align: center;
+        padding-top: 80px;
+    }
+    h1 {
+        font-size: 3rem;
+        color: #000; /* Base black color */
+        background: linear-gradient(145deg, #000, #333);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), 
+                    -1px -1px 2px rgba(0, 0, 0, 0.5);
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+        color: #26c6da;
+        font-family: cursive;
+        margin-top: -8px;
+        margin-bottom: 48px;
+    }
+    .ai-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+    }
+    .feature-card {
+        background-color: #f8f9fa;
+        border: 1px solid #26c6da;
+        border-radius: 8px;
+        padding: 24px;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+    }
+    .feature-card:hover {
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+    }
+    .feature-icon {
+        font-size: 3rem;
+        color: #26c6da;
+        margin-bottom: 16px;
+        position: relative;
+    }
+    .feature-badge {
+        position: absolute;
+        bottom: -8px;
+        right: -8px;
+        background-color: #26c6da;
+        color: white;
+        font-size: 0.75rem;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 9999px;
+    }
+    .feature-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #333;
+    }
+    .feature-description {
+        font-size: 0.875rem;
+        color: #666;
+    }
+    .description {
+        color: #333;
+        max-width: 42rem;
+        margin: 48px auto;
+        font-size: 1.125rem;
+    }
+    
+</style>
+</head>
+<body>
+<!-- Header -->
+<header style="height: 60px; width: auto;">
+    <h2 class="logo-text">TravelUP</h2>
+    <nav >
+        <h3><a href="/loggedinhome">Home</a></h3>
+    </nav>
+    
+</header>
+
+
+
+<div class="container">
+    <div class="content">
+        <div class="main-content">
+            <h1>Explore Smarter</h1>
+                <div class="subtitle"> "The Future of Tourism with AI"</div>
+                <div class="ai-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <a href="/trip-planner">💡</a>
+                            <span class="feature-badge">AI</span>
+                        </div>
+                        <h3 class="feature-title">Plan Your Trip With Z-AI</h3>
+                        <p class="feature-description">
+                            "Leverage cutting-edge AI to discover hidden gems and personalized travel recommendations."
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <a href="/chatbot">💬</a>
+                            <span class="feature-badge">Z-AI</span>
+                        </div>
+                        <h3 class="feature-title">Chat with Z-AI</h3>
+                        <p class="feature-description">
+                            "Plan your perfect trip by conversing with our advanced Z-AI travel assistant.""
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <a href="/imagesearch">📷</a>
+                            <span class="feature-badge">Vision</span>
+                        </div>
+                        <h3 class="feature-title">Image Recognition</h3>
+                        <p class="feature-description">
+                            "Explore destinations through advanced image analysis and immersive experiences."
+                        </p>
+                    </div>
+                </div>
+                
+                <p class="description">
+                    "Discover the future of travel with Z-Travel AI: personalized adventures made effortless, from planning to exploring."
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

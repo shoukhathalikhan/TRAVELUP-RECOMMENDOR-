@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAIBA - Your Travel AI Genius</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --zaiba-teal: #26c6da;
+            --zaiba-teal-dark: #0097a7;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-zaiba-teal { background-color: var(--zaiba-teal); }
+        .hover-bg-zaiba-teal:hover { background-color: var(--zaiba-teal-dark); }
+        .chat-content { height: calc(100vh - 160px); }
+        .message-container {
+            max-width: 80%;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            animation: messageSlide 0.3s ease-out;
+        }
+        .user-message {
+            background-color: #ffffff;
+            margin-left: auto;
+            border-top-right-radius: 0;
+        }
+        .bot-message {
+            background-color: var(--zaiba-teal);
+            color: white;
+            border-top-left-radius: 0;
+        }
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #chatContent {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+        .sidebar-option:hover .sidebar-icon {
+            color: var(--zaiba-teal);
+        }
+        .logo-container {
+            padding: 1rem;
+        }
+        .logo-text {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #26c6da, #0097a7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="flex h-screen bg-gray-50">
+    <!-- Left sidebar -->
+    <div class="w-80 bg-white border-r border-gray-200 flex flex-col">
+        <div class="p-4 border-b border-gray-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="logo-container">
+                    <span class="logo-text">Z-AI</span>
+                </div>
+            </div>
+            <button onclick="startNewChat()" class="w-full flex items-center px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg border border-gray-200 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-zaiba-teal" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                New Chat
+            </button>
+        </div>
+        
+        <!-- Travel Options -->
+        <div class="p-4 flex-1 overflow-auto">
+            <h3 class="text-sm font-semibold text-gray-500 mb-3 px-4">TRAVEL OPTIONS</h3>
+            <nav class="space-y-1">
+                <% const travelOptions = [
+                   
+
+                ] %>
+                <% travelOptions.forEach(function(option) { %>
+                    <button class="sidebar-option w-full flex items-center px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg group transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="sidebar-icon h-5 w-5 mr-3 text-gray-400 transition-colors">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="<%= option.icon %>" />
+                        </svg>
+                        <span><%= option.label %></span>
+                    </button>
+                <% }); %>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main chat area -->
+    <div class="flex-1 flex flex-col">
+        <div id="chatContent" class="chat-content flex-1 overflow-auto p-6 space-y-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="message-container bot-message">
+                    <p>Hi, I'm ZAIBA, your travel AI assistant. How can I help you plan your next adventure?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat input -->
+        <div class="p-4 border-t border-gray-200 bg-white">
+            <div class="max-w-3xl mx-auto relative">
+                <input type="text" id="messageInput" placeholder="Ask about your next journey..." class="w-full px-4 py-3 pr-12 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-zaiba-teal focus:border-transparent">
+                <button onclick="sendMessage()" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-zaiba-teal hover:bg-zaiba-teal-dark text-white rounded-full p-2 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-90" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const messageInput = document.getElementById('messageInput');
+        const chatContent = document.getElementById('chatContent');
+
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            appendMessage(message, 'user');
+            messageInput.value = '';
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ prompt: message }),
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    appendMessage('Sorry, I encountered an error. Please try again.', 'bot');
+                } else {
+                    appendMessage(data.message, 'bot');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('Sorry, I encountered an error. Please try again.', 'bot');
+            }
+        }
+
+        function appendMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `max-w-3xl mx-auto`;
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = `message-container ${type}-message`;
+            messageContent.textContent = message;
+            
+            messageDiv.appendChild(messageContent);
+            chatContent.appendChild(messageDiv);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+
+        function startNewChat() {
+            chatContent.innerHTML = '';
+            appendMessage('Hi, I\'m ZAIBA, your travel AI assistant. How can I help you plan your next adventure?', 'bot');
+        }
+    </script>
+</body>
+</html>

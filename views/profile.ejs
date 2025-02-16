@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - TravelUP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .profile-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .profile-pic-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #26c6da;
+            object-fit: cover;
+        }
+
+        .edit-pic-btn {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: #26c6da;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .edit-pic-btn:hover {
+            background: #1fa5b8;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .profile-details {
+            padding: 20px;
+        }
+
+        .detail-group {
+            margin-bottom: 25px;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            color: #333;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .edit-profile-btn {
+            background: #26c6da;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto 0;
+            transition: background 0.3s;
+        }
+
+        .edit-profile-btn:hover {
+            background: #1fa5b8;
+        }
+
+        .not-found {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .not-found h2 {
+            color: #26c6da;
+            margin-bottom: 15px;
+        }
+
+        .not-found a {
+            color: #26c6da;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include('header') %>
+
+    <div class="profile-section">
+        <% if (user && user.username) { %>
+            <div class="profile-header">
+                <div class="profile-pic-container">
+                    <img 
+                        src="<%= user.profilePicture || '/images/default-profile.jpg' %>" 
+                        alt="Profile Picture" 
+                        class="profile-pic"
+                    >
+                    <form id="profilePicForm" action="/update-profile-picture" method="POST" enctype="multipart/form-data">
+                        <input 
+                            type="file" 
+                            name="profilePicture" 
+                            id="profilePicInput" 
+                            accept="image/*" 
+                            style="display: none;"
+                        >
+                        <button 
+                            type="button" 
+                            class="edit-pic-btn" 
+                            onclick="document.getElementById('profilePicInput').click()"
+                        >
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </form>
+                </div>
+                <h1 class="profile-name"><%= user.username %></h1>
+            </div>
+
+            <div class="profile-details">
+                <div class="detail-group">
+                    <span class="detail-label">Email</span>
+                    <div class="detail-value">
+                        <%= user.email || 'Not provided' %>
+                    </div>
+                </div>
+
+                <div class="detail-group">
+                    <span class="detail-label">Phone Number</span>
+                    <div class="detail-value">
+                        <%= user.phone || 'Not provided' %>
+                    </div>
+                </div>
+
+                <div class="detail-group">
+                    <span class="detail-label">Location</span>
+                    <div class="detail-value">
+                        <%= user.location || 'Not provided' %>
+                    </div>
+                </div>
+
+                <button class="edit-profile-btn" onclick="window.location.href='/edit-profile'">
+                    Edit Profile
+                </button>
+            </div>
+        <% } else { %>
+            <div class="not-found">
+                <h2>Please log in to view your profile</h2>
+                <p>Don't have an account? <a href="/register">Sign up now</a></p>
+            </div>
+        <% } %>
+    </div>
+
+    <script>
+        // Handle profile picture upload
+        document.getElementById('profilePicInput')?.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                document.getElementById('profilePicForm').submit();
+            }
+        });
+    </script>
+</body>
+</html>

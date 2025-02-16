@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ladakh</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travel Guide Ladakh">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/styles/offers_styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/offers_responsive.css">
+    <style>
+        p { text-align: justify; }
+    </style>
+</head>
+
+<body>
+    <div class="super_container">
+        <%- include('headerplaces') %> <!-- Include header if you have one -->
+
+        <div class="menu trans_500">
+            <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="menu_close_container"><div class="menu_close"></div></div>
+                <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                <ul>
+                    <li class="menu_item"><a href="/loggedinhome">HOME</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Home Section -->
+        <div class="home">
+            <div class="home_background parallax-window" data-parallax="scroll" data-image-src="/images/ladakh.jpg"></div>
+        </div>
+
+        <!-- Offers Section -->
+        <div class="search">
+            <div class="search_inner">
+                <div class="container fill_height no-padding">
+                    <div class="row fill_height no-margin">
+                        <div class="col fill_height no-padding">
+                            <div class="home_title" style="color:#26c6da; font-size: 3rem; font-weight: bold;">
+                                <center>Ladakh</center>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>    
+        </div>
+
+        <!-- Offers -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1 temp_col"></div>
+                <div class="col-lg-11">
+                    <div class="offers_grid">
+
+                        <!-- Place 1: Pangong Lake -->
+                        <div class="offers_item rating_5">
+                            <div class="row">
+                                <div class="col-lg-1 temp_col"></div>
+                                <div class="col-lg-3 col-1680-4">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background" style="background-image:url(/images/pangong_lake.jpg)"></div>
+                                        <div class="offer_name"><a href="single_listing.html">Pangong Lake</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="offers_content">
+                                        <div class="offers_price">Pangong Lake</div>
+                                        <div class="rating_r rating_r_5 offers_rating" data-rating="5">
+                                            <i></i><i></i><i></i><i></i><i></i>
+                                        </div>
+                                        <p class="offers_text">The breathtaking Pangong Lake, stretching across India and China, is renowned for its crystal-clear blue waters...</p>
+                                        <div class="button book_button"><a href="https://www.holidify.com/places/ladakh/pangong-lake-sightseeing-4479.html" target="_blank" rel="noopener noreferrer">Know more<span></span><span></span><span></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Place 2: Nubra Valley -->
+                        <div class="offers_item rating_5">
+                            <div class="row">
+                                <div class="col-lg-1 temp_col"></div>
+                                <div class="col-lg-3 col-1680-4">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background" style="background-image:url(/images/nubra.jpg)"></div>
+                                        <div class="offer_name"><a href="single_listing.html">Nubra Valley</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="offers_content">
+                                        <div class="offers_price">Nubra Valley</div>
+                                        <div class="rating_r rating_r_5 offers_rating" data-rating="5">
+                                            <i></i><i></i><i></i><i></i><i></i>
+                                        </div>
+                                        <p class="offers_text">A picturesque valley known for its sand dunes, double-humped camels, and stunning landscapes...</p>
+                                        <div class="button book_button"><a href="https://www.holidify.com/places/ladakh/nubra-valley-sightseeing-4485.html" target="_blank" rel="noopener noreferrer">Know more<span></span><span></span><span></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Place 3: Magnetic Hill -->
+                        <div class="offers_item rating_5">
+                            <div class="row">
+                                <div class="col-lg-1 temp_col"></div>
+                                <div class="col-lg-3 col-1680-4">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background" style="background-image:url(/images/magnetic.jpg)"></div>
+                                        <div class="offer_name"><a href="single_listing.html">Magnetic Hill</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="offers_content">
+                                        <div class="offers_price">Magnetic Hill</div>
+                                        <div class="rating_r rating_r_5 offers_rating" data-rating="5">
+                                            <i></i><i></i><i></i><i></i><i></i>
+                                        </div>
+                                        <p class="offers_text">A curious phenomenon where cars seemingly roll uphill against gravity...</p>
+                                        <div class="button book_button"><a href="https://www.holidify.com/places/ladakh/magnetic-hill-sightseeing-4486.html" target="_blank" rel="noopener noreferrer">Know more<span></span><span></span><span></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="/js/jquery-3.2.1.min.js"></script>
+        <script src="/styles/bootstrap4/popper.js"></script>
+        <script src="/styles/bootstrap4/bootstrap.min.js"></script>
+        <script src="/plugins/easing/easing.js"></script>
+        <script src="/plugins/parallax-js-master/parallax.min.js"></script>
+    </div>
+</body>
+</html>

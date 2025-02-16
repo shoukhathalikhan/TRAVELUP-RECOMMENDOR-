@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload with Preview</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #26c6da;
+            --secondary-color: #5a6263;
+            --gradient-start: #a1c4fd;
+            --gradient-end: #c2e9fb;
+            --text-color: #2c3e50;
+            --background-color: #f4f7f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
+            color: var(--text-color);
+            line-height: 1.6;
+            position: relative;
+        }
+
+       /* Home button style */
+    .home-button {
+        position: absolute;
+        top: 20px;
+        left: 20px; /* Changed from right: 20px to left: 20px */
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+
+        .home-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Upload container */
+        .upload-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .upload-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.05);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .upload-header {
+            margin-bottom: 30px;
+        }
+
+        .upload-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .upload-header p {
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        /* File input styles */
+        .file-input-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .custom-file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .file-drop-area {
+            border: 2px dashed var(--primary-color);
+            border-radius: 20px;
+            padding: 50px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .file-drop-area:hover,
+        .file-drop-area.is-active {
+            background: rgba(74, 144, 226, 0.05);
+            border-color: var(--secondary-color);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .file-drop-area:hover .upload-icon {
+            transform: scale(1.1);
+        }
+
+        /* Image preview styles */
+        .preview-container {
+            margin-top: 25px;
+            max-height: 300px;
+            overflow: hidden;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+            margin-top: 20px;
+        }
+
+        /* Submit button styles */
+        .upload-btn {
+            background: linear-gradient(135deg, #26c6da, #0ea7b8);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(79, 192, 194, 0.3);
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(79, 192, 194, 0.3);
+        }
+
+        .upload-btn:focus {
+            outline: none;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 768px) {
+            .upload-container {
+                padding: 30px 20px;
+            }
+
+            .upload-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Home button positioned at the top-right corner -->
+    <button class="home-button" onclick="window.location.href='/search';">Back</button>
+
+    <div class="upload-wrapper">
+        <div class="upload-container">
+            <div class="upload-header">
+                <h1>Upload Your Travel Image</h1>
+                <p>Select a high-quality image that captures your travel memories</p>
+            </div>
+
+            <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+                <div class="file-input-wrapper">
+                    <div class="file-drop-area">
+                        <div class="upload-icon">📸</div>
+                        <span>Drag and drop or click to upload</span>
+                        <input type="file" 
+                               class="custom-file-input" 
+                               id="fileInput" 
+                               name="file" 
+                               accept="image/*" 
+                               required>
+                    </div>
+                </div>
+
+                <div class="preview-container">
+                    <img id="imagePreview" class="preview-image" src="#" alt="Image Preview">
+                </div>
+
+                <button type="submit" class="upload-btn">
+                    Upload Image
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('fileInput');
+            const fileDropArea = fileInput.closest('.file-drop-area');
+            const imagePreview = document.getElementById('imagePreview');
+
+            // File input change event
+            fileInput.addEventListener('change', function(e) {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        imagePreview.src = event.target.result;
+                        imagePreview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Drag and drop functionality
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                fileDropArea.classList.add('is-active');
+            }
+
+            function unhighlight() {
+                fileDropArea.classList.remove('is-active');
+            }
+
+            fileDropArea.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                const file = e.dataTransfer.files[0];
+                if (file) {
+                    fileInput.files = e.dataTransfer.files;
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        imagePreview.src = event.target.result;
+                        imagePreview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

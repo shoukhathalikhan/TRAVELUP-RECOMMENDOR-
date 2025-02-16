@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelscapes</title>
+    <style>
+        a {
+            font-family: 'Arial', sans-serif;
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #26c6da;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <%- include('headerindex') %>
+
+    <section class="home" id="home">
+        <video class="background-video" src="images/vid1.mp4" loop autoplay muted></video>
+        <div class="content">
+            <span> Incredible India: </span>
+            <p>Where Every Place is a Story, Every Journey an Adventure.</p>
+            <a href="#products" class="btn">Travel Now</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h1 class="heading"> <span> about </span> us </h1>
+        <div class="row">
+            <div class="video-container">
+                <video src="images/vid2.mp4" loop autoplay muted></video>
+                <h3>Best Places</h3>
+            </div>
+            <div class="content">
+                <h3>Why Choose Us?</h3>
+                <p>Explore the best places in India with us! From stunning mountains to beautiful beaches, we highlight the country's diverse landscapes and rich culture. Experience the wonders of India and make unforgettable memories!</p>
+                <a href="/login" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="places" id="places"></section>
+
+    <section class="products" id="products">
+        <h1 class="heading"> Popular <span>Places</span> </h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="image">
+                    <img src="images/Manali.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Manali</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/Rajasthan.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Rajastan</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/Ladakh.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Ladakh</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/Chennai.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Chennai</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/kerala.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Kerala</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/goa.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Goa</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/sikkim.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Sikkim</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/Pune.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Pune</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/Mumbai.jpg" alt="">
+                </div>
+                <div class="content">
+                    <a href="/login">Mumbai</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>About TravelUP</h3>
+                <p style="font-size: 1.5rem;">
+                    "Your AI-powered travel companion for smarter, more personalized journeys, seamless adventures, real-time recommendations."
+                </p>
+            </div>
+    
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/loggedinhome">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#places">places</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media Section -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" style="color:white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color:white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color:white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color:white; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Footer Bottom Section -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 TravelUP. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

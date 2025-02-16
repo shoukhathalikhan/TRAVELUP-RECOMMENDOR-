@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Travel Recomendation System</title>
+    <!-- bootstrap css cdn -->
+    
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron" style="text-align:center">
+            <a href="{{url_for('upload')}}" style="text-decoration:none;color:black"><h1>Image Recomendation</h1></a>
+            {{img_loc}}
+            {{final_res}}
+            {{res_name}}
+        </div>
+        <div class="col-md-12 row">
+            <div class="col-md-6">
+                <label for="">Query Image</label>
+                <br>
+                    <img src="{{ url_for('static', filename='images/'+img_loc) }}" width="200" height="200">
+            </div>
+            <div class="col-md-6">
+                <label for="">Result Image</label>
+                <br>
+                <img src="{{ url_for('static', filename='dataset/'+final_res) }}" width="200" height="200">
+                <br>
+                <a href="#">{{res_name}}</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

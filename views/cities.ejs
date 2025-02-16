@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Recommendations</title>
+</head>
+<body>
+    <div>
+        <!-- Search Form -->
+        <form action="/cities" method="POST">
+            <input type="text" name="city" placeholder="Enter City Name" required>
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Display City Data if Available -->
+        <% if (cityData && cityData.length > 0) { %>
+            <h2>City Information</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>Rating</th>
+                        <th>Ideal Duration</th>
+                        <th>Best Time to Visit</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cityData.forEach(city => { %>
+                        <tr>
+                            <td><%= city.city %></td>
+                            <td><%= city.rating %></td>
+                            <td><%= city.ideal_duration %></td>
+                            <td><%= city.best_time_visit %></td>
+                            <td><%= city.City_desc %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No city found matching the given name.</p>
+        <% } %>
+    </div>
+</body>
+</html>

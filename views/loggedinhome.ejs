@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelscapes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a {
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #26c6da;
+        }
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 20px 0;
+        }
+        .footer .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+        .footer .box {
+            flex: 1 1 22%;
+            margin: 15px;
+        }
+        .footer .box h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .footer .box a {
+            display: block;
+            font-size: 16px;
+            margin: 8px 0;
+            color: #ddd;
+        }
+        .footer .box a:hover {
+            color: #26c6da;
+        }
+        .footer .box p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .footer .social-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer .social-links a {
+            margin: 0 10px;
+            color: white;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+        .footer .social-links a:hover {
+            color: #26c6da;
+        }
+        .footer .credit {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #ddd;
+        } */
+       
+        a {
+            font-family: 'Arial', sans-serif;
+            font-size: 25px;
+            font-weight: bold; /* Make text bold */
+            color:black; /* Link color */
+            text-decoration: none; /* Optional: removes underline */
+        }
+
+        a:hover {
+            color: #26c6da; /* Change color when hovered */
+        }
+    </style>
+</head>
+<body>
+    <%- include('header') %> <!-- Include header if you have one -->
+
+    
+    <section class="home" id="home">
+        <video class="background-video" src="images/vid1.mp4" loop autoplay muted></video>
+        <div class="content">
+            <span style="color: rgb(255, 249, 249);"> Incredible India: </span>
+            <p>Where Every Place is a Story, Every Journey an Adventure.</p>
+            <a href="/search" class="btn" style="color: white;">Travel Now</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h1 class="heading"> <span>About</span> Us </h1>
+        <div class="row">
+            <div class="video-container">
+                <video src="images/vid2.mp4" loop autoplay muted></video>
+                <h3>Best Places</h3>
+            </div>
+            <div class="content">
+                <h3>Why Choose Us?</h3>
+                <p>Explore the best places in India with us! From stunning mountains to beautiful beaches, we highlight the country's diverse landscapes and rich culture. Experience the wonders of India and make unforgettable memories!</p>
+                <a href="/aboutus" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+<section class="places" id="places"></section>
+    <section class="products" id="products" >
+        <h1 class="heading"> Popular <span>Places</span> </h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="image">
+                    <img src="images/Mysore.jpg" alt="Mumbai">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="./Login/login.php" class="cart-btn">Visit Us</a>
+                        <a href="./Login/login.php" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/mysorelog">Mysore</a>
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/Manali.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="/login" class="cart-btn">Visit Us</a>
+                        <a href="/login" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/manali">Manali</a>
+                    <!-- <div class="price">Rs 35000</div> -->
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/Rajasthan.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="/login" class="cart-btn">Visit Us</a>
+                        <a href="/login" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/rajastan">Rajastan</a>
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/Ladakh.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="/login" class="cart-btn">Visit Us</a>
+                        <a href="/login" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/ladakh">Ladakh</a>
+                    <!-- <div class="price">Rs 50000 </div> -->
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/Chennai.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="/login" class="cart-btn">Visit Us</a>
+                        <a href="/login" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/chennai">Chennai</a>
+                    <!-- <div class="price">Rs 30000 </div> -->
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/kerala.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="/login" class="cart-btn">Visit Us</a>
+                        <a href="/login" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/kerala">Kerala</a>
+                    <!-- <div class="price">Rs 21000</div> -->
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/goa.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="/login" class="cart-btn">Visit Us</a>
+                        <a href="/login" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">S
+                    <a href="/goa">Goa</a>
+
+                    <!-- <div class="price">Rs 15000</div> -->
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/sikkim.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="./Login/login.php" class="cart-btn">Visit Us</a>
+                        <a href="./Login/login.php" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/sikkim">Sikkim</a>
+                    <!-- <div class="price">Rs 55000</div> -->
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/Pune.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="./Login/login.php" class="cart-btn">Visit Us</a>
+                        <a href="./Login/login.php" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/pune">Pune</a>
+                    <!-- <div class="price">Rs 15000</div> -->
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="image">
+                    <img src="images/Mumbai.jpg" alt="Mumbai">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="./Login/login.php" class="cart-btn">Visit Us</a>
+                        <a href="./Login/login.php" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <a href="/mumbai">Mumbai</a>
+
+                    <!-- <div class="price">Rs 15000</div> -->
+                </div>
+            </div>
+            
+    
+    </section>
+    
+    
+    <!-- <section class="review" id="review">
+        <h1 class="heading"> Customer's <span>Review</span> </h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Booking my dream trip to Kerala was a breeze with Travelscapes – seamless and stress-free!</p>
+                <div class="user">
+                    <img src="images/pic-1.jpg" alt="Atharva PFP">
+                    <div class="user-info">
+                        <h3>Atharva</h3>
+                        <span>Goa</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- <section class="contact" id="contact">
+        <h1 class="heading"> <span>Contact</span> Us </h1>
+        <div class="row">
+            <form action="">
+                <input type="text" placeholder="Name" class="box">
+                <input type="email" placeholder="Email" class="box">
+                <input type="number" placeholder="Number" class="box">
+                <textarea class="box" placeholder="Message" cols="30" rows="10"></textarea>
+                <input type="submit" value="Send Message" class="btn">
+            </form>
+            <div class="image">
+                <img src="images/contact-img.svg" alt="">
+            </div>
+        </div>
+    </section> -->
+
+    <footer>
+        <div class="container footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>About TravelUP</h3>
+                <p style="font-size: 1.5rem;">
+                    "Your AI-powered travel companion for smarter, more personalized journeys, seamless adventures, real-time recommendations."
+                </p>
+            </div>
+    
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/loggedinhome">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#places">places</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media Section -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" style="color:white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color:white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color:white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color:white; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Footer Bottom Section -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 TravelUP. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script> <!-- Link to your JavaScript file -->
+    
+</body>
+</html>
